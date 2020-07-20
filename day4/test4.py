@@ -1,6 +1,6 @@
-msg = "HELLO"
-print(msg)
-
+# msg = "HELLO"
+# print(msg)
+msg = input("글자 입력하세요 : ")
 # 이 글자를 소문자로 변환 시키고자 합니다.
 print(msg.lower())
 # 1. 각 글자의 ASCII코드 값을 구한다.
@@ -13,6 +13,10 @@ for i in range(len(msg)):
     if code >= 65 and code <= 90:
 # 3. 변환된 값을 코드로 출력
         print(chr(code+32), end ="")
+    elif code <=122 and code >=97:
+        print(chr(code-32), end ="")
+        
+print()
 # hello
 
 
