@@ -59,36 +59,25 @@ num = random.randint(1,100)
 # 일치하지 않으면 사용자가 입력한 수 보다 큰지 작은지 출력
 # 다시 입력 받도록 하고싶다
 
-# def aaa() :
-#     guess = int(input("숫자 한개 입력해라 : "))
-#     if num == guess : print("일치합니다.")
-#     else : 
-#         if num > guess:
-#             print('그거보단 클걸?')
-#         else:
-#             print('그거보단 작을걸?')
-#         aaa()
+def aaa() :
+    guess = int(input("숫자 한개 입력해라 : "))
+    if num == guess : print("일치합니다.")
+    else : 
+        if num > guess:
+            print('그거보단 클걸?')
+        else:
+            print('그거보단 작을걸?')
+        aaa()
+aaa()
 
-# # aaa()
+while True:
+    guess = int(input("숫자 한개 입력해라 : "))
+    if num == guess : 
+        print("일치합니다.")
+        break
+    else : 
+        if num > guess:
+            print('그거보단 클걸?')
+        else:
+            print('그거보단 작을걸?')
 
-# while True:
-#     guess = int(input("숫자 한개 입력해라 : "))
-#     if num == guess : 
-#         print("일치합니다.")
-#         break
-#     else : 
-#         if num > guess:
-#             print('그거보단 클걸?')
-#         else:
-#             print('그거보단 작을걸?')
-
-
-# 과일명, 과일생산지를 dictionary 로 작성
-fruit = {
-    '사과' : '여기',
-    '딸기' : '저기',
-    '포도' : '포도당',
-    '배' : 'ㅡㅡ',
-    '망고' : '구아바',
-}
-print(fruit)
