@@ -83,7 +83,7 @@ for i in range(20):
 def get_last_word(listData):
     result = []
     for i in listData:
-        result.append(i[2:])
+        result.append(i[-3:])
     return result
 
 # 11. 지금까지 만들어진 함수를 test 라는 모듈로 작성하세요

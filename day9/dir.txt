@@ -1,0 +1,19 @@
+$Recycle.Bin
+bootTel.dat
+Documents and Settings
+hiberfil.sys
+Intel
+pagefile.sys
+PerfLogs
+Program Files
+Program Files (x86)
+ProgramData
+recovery
+rhdsetup.log
+Setup.log
+swapfile.sys
+System Volume Information
+TEMP
+Users
+User_manual
+Windows
