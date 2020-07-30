@@ -55,3 +55,6 @@ class Player:
 
 p = Player("서든초보")
 p.fire_gun()
+p.fire_knife()
+p.fire_grenade()
+p.fire_c4()
