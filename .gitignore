@@ -1,3 +1,7 @@
 
 .vscode/launch.json
 *.pyc
+node_modules
+dist/*
+build/*
+*.log
