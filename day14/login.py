@@ -11,31 +11,50 @@ class RegisterClass(QMainWindow):
         self.resize(300, 300)
         
         self.labelRId = QLabel("ID", self)
-        self.labelRId.move(70, 50)
-        self.labelRPw = QLabel("pw", self)
-        self.labelRPw.move(70, 100)
+        self.labelRId.move(70, 20)
+        self.labelRPw = QLabel("PW", self)
+        self.labelRPw.move(70, 70)
         self.labelRNm = QLabel("NAME", self)
-        self.labelRNm.move(70, 150)
+        self.labelRNm.move(70, 120)
+        self.labelRDeno = QLabel("DENO", self)
+        self.labelRDeno.move(70, 170)
         
         self.leRId = QLineEdit(self)
-        self.leRId.move(120, 50)
+        self.leRId.move(120, 20)
         self.leRPw = QLineEdit(self)
-        self.leRPw.move(120, 100)
+        self.leRPw.move(120, 70)
         self.leRNm = QLineEdit(self)
-        self.leRNm.move(120, 150)
+        self.leRNm.move(120, 120)
+        self.leRDeno = QLineEdit(self)
+        self.leRDeno.move(120, 170)
 
         self.rBtn = QPushButton("회원가입", self)
-        self.rBtn.move(120, 200)
+        self.rBtn.move(120, 220)
         self.rBtn.clicked.connect(self.reg)
         
     def reg(self):
+        # QCoreApplication.instance().quit()
         connection = cx_Oracle.connect("scott", "tiger", "db1")
         cur = connection.cursor()
-        query = "insert into member values(:id, :pw, :name, 0)"
-
-        cur.execute(query,[self.leRId.text(), self.leRPw.text(), self.leRNm.text()])
-        connection.commit()
+        query = "insert into member values(:id, :pw, :name, :deptno)"
+        if self.leRId.text() == "":
+            msg = "아이디를 입력하세요."
+        elif self.leRPw.text() == "":
+            msg = "패스워드를 입력하세요."
+        elif self.leRNm.text() == "":
+            msg = "이름을 입력하세요."
+        elif self.leRDeno.text() == "":
+            msg = "부서번호를 입력하세요."
+        else:
+            try:
+                cur.execute(query,[self.leRId.text(), self.leRPw.text(), self.leRNm.text(), self.leRDeno.text()])
+                msg = "회원가입이 완료되었습니다."
+                connection.commit()                
+                self.hide()
+            except Exception as e:
+                msg = "회원가입 실패 ㅠㅠ\n"+str(e)
         
+        QMessageBox.question(self, "회원가입 결과", msg, QMessageBox.Yes, QMessageBox.Yes)
         connection.close()
         
 
@@ -120,7 +139,6 @@ class MyApp(QWidget):
     def register(self):
         self.nw = RegisterClass(self)
         self.nw.show()
-        print("reg ")
 
 # 현재 파일에서 호출시에만 실행가능하게 설정
 
