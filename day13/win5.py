@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QCoreApplication, Qt
 import time
+import threading
+import math
 
 class MyApp(QWidget):
     def __init__(self):
@@ -49,10 +51,21 @@ class MyApp(QWidget):
         elif key == 68 or key == Qt.Key_Right:
             self.right()
         elif key == Qt.Key_Space:
-            print("스페이스바가 눌렸음 ")
-            self.up()
-            time.sleep(1)
-            self.down()
+            t = threading.Thread(target=self.moveTurtle)
+            t.start()
+
+    def moveTurtle(self):
+        print("스페이스바가 눌렸음 ")
+        for i in range(1, 101):
+            # print(math.sin(math.pi/101 *i *2)*10)
+            self.label1.move(self.label1.x()+1, self.label1.y() - int(math.sin(math.pi/101 *i *2)*10))
+            time.sleep(0.01)
+        # for i in range(10):
+        #     self.label1.move(self.label1.x(), self.label1.y() - 10)
+        #     time.sleep(0.01)
+        # for i in range(10):
+        #     self.label1.move(self.label1.x(), self.label1.y() + 10)
+        #     time.sleep(0.01)
 
         
 
