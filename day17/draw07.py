@@ -2,6 +2,9 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import random
+import time
+import threading
 
 class MyWindow(QWidget):
     def __init__(self):
@@ -22,17 +25,29 @@ class MyWindow(QWidget):
         qp = QPainter()
         # 페인팅 시작
         qp.begin(self)
+
+        qp.setPen(QColor(0,0,0))
+        # qp.setFont(QFont("폰트명", 사이즈))
+        # c:\windows\fonts 가면 보임
+        qp.setFont(QFont("나눔고딕", 50))
+        qp.drawText(100, 100, "푸른하늘 은하수")
+
+        self.drawOther(qp)
         
-        # 펜 설정(빨강,10)
-        qp.setPen(QPen(Qt.red, 10))
-        # drawLine(x1, y1, x2, y2)
-        qp.drawLine(100,100,200,200)
-
-        qp.setPen(QPen(Qt.green, 10))
-        qp.drawLine(100,200,200,100)
-
         # 페인팅 끝
         qp.end()
+
+    def drawOther(self, qp):
+        pen = QPen(Qt.black, 3, Qt.SolidLine)
+
+        qp.setPen(pen)
+        qp.drawLine(50,50,100,50)
+
+        pen.setStyle(Qt.DashLine)
+        qp.setPen(pen)
+        qp.drawLine(200, 50, 100, 50)
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

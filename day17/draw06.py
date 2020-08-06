@@ -2,6 +2,9 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import random
+import time
+import threading
 
 class MyWindow(QWidget):
     def __init__(self):
@@ -22,17 +25,14 @@ class MyWindow(QWidget):
         qp = QPainter()
         # 페인팅 시작
         qp.begin(self)
+        for i in range(1000):
+            qp.setPen(QPen(QColor(random.randint(0,255), random.randint(0,255), random.randint(0,255)), random.randint(1,50)))
+            qp.drawLine(random.randint(0, 800), random.randint(0,600), random.randint(0,800), random.randint(0,600))
         
-        # 펜 설정(빨강,10)
-        qp.setPen(QPen(Qt.red, 10))
-        # drawLine(x1, y1, x2, y2)
-        qp.drawLine(100,100,200,200)
-
-        qp.setPen(QPen(Qt.green, 10))
-        qp.drawLine(100,200,200,100)
-
         # 페인팅 끝
         qp.end()
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -23,13 +23,12 @@ class MyWindow(QWidget):
         # 페인팅 시작
         qp.begin(self)
         
-        # 펜 설정(빨강,10)
-        qp.setPen(QPen(Qt.red, 10))
-        # drawLine(x1, y1, x2, y2)
-        qp.drawLine(100,100,200,200)
+        qp.setPen(QPen(Qt.red, 5))
+        # 타원 drawEllipse(QpointF(x,y), width, height)
+        qp.drawEllipse(QPointF(220.0,220.0), 100, 200)
 
-        qp.setPen(QPen(Qt.green, 10))
-        qp.drawLine(100,200,200,100)
+        qp.setPen(QPen(Qt.blue, 5))
+        qp.drawEllipse(QPointF(550.0,220.0), 200, 100)
 
         # 페인팅 끝
         qp.end()

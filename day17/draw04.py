@@ -22,14 +22,28 @@ class MyWindow(QWidget):
         qp = QPainter()
         # 페인팅 시작
         qp.begin(self)
-        
-        # 펜 설정(빨강,10)
-        qp.setPen(QPen(Qt.red, 10))
-        # drawLine(x1, y1, x2, y2)
-        qp.drawLine(100,100,200,200)
+        # 색상 채우기
+        qp.setBrush(QColor(255,0,255))
+        # 펜설정 : 회색, 5
+        qp.setPen(QPen(QColor(100,100,100), 5))
+        # drawRect(x, y, width, height)
+        qp.drawRect(30,30,100,150)
 
-        qp.setPen(QPen(Qt.green, 10))
-        qp.drawLine(100,200,200,100)
+        qp.setPen(QPen(Qt.red, 5))
+        qp.drawLine(200, 100, 700, 100)
+
+        qp.setPen(QPen(Qt.blue, 5))
+        qp.setBrush(QColor(Qt.blue))
+        qp.drawRect(200,200, 100,100)
+        qp.setBrush(QColor(Qt.yellow))
+        qp.drawRect(400,200, 100,100)
+        qp.setBrush(QColor(QColor(123,123,12)))
+        qp.drawRect(600,200, 100,100)
+
+        qp.setBrush(QColor(Qt.green))
+        qp.setPen(QPen(Qt.green, 5))
+        qp.drawRect(200, 400, 500, 100)
+
 
         # 페인팅 끝
         qp.end()
