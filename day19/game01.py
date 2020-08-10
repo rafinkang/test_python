@@ -1,6 +1,7 @@
 # pip install pygame
 import pygame
 import math
+import random
 
 pygame.init()
 
@@ -49,6 +50,12 @@ hole = pygame.transform.scale(hole, (10,10))
 # 총알구멍 위치
 holeX = 0
 holeY = 0
+# 총알구멍 리스트
+holeList = []
+
+# 반동 변수
+rebound = 0
+
 # 조준경 위치
 snipeX = 300
 snipeY = 300
@@ -59,10 +66,18 @@ ry = 200
 bg1X = 0
 bg2X = 1900
 bgY = 0
+
 cnt = 0
 clock = pygame.time.Clock()
 isRunning = True    # 게임을 계속 진행할지, 중지할지를 결정하는 변수
                     # flag성 변수
+                    
+# font 객체
+pygame.font.init()
+myFont = pygame.font.SysFont("Comic Sans MS", 30)
+
+score = 0
+
 while isRunning:
     cnt += 1
     bg1X -= 2
@@ -74,17 +89,32 @@ while isRunning:
     # 프레임 확인
     # print("fps:"+str(clock.get_fps()))
     
+    if rebound > 2 : rebound -= 2
+    
     for event in pygame.event.get():    # 이벤트 모으기
         if event.type == pygame.QUIT:
             isRunning = False
             
         if event.type == pygame.MOUSEBUTTONUP:
+            rebound = 50
             # fSound.play()
             holeX, holeY = pygame.mouse.get_pos()
             dis = pythagoras(holeX, holeY, rx+50, ry+50)
             # print(dis)
             if dis < 50:
-                print("사냥성공!")
+                holeList.append((rx - holeX, ry - holeY))
+                # print("사냥성공!")
+                score += 100
+                # 맞으면 토끼가 랜덤위치로 이동
+                rx = random.randint(1, screen_width - 100)
+                ry = random.randint(1, screen_height - 100)
+            else:
+                score -= 200
+
+
+    
+    # print("홀리스트 : ", holeList)
+                
     # print(pygame.mouse.get_pressed())
     # mouses = pygame.mouse.get_pressed()
     # print(pygame.mouse.get_pos()) # return tuple
@@ -115,14 +145,21 @@ while isRunning:
     # 배경 그리기
     screen.blit(bg1, (bg1X,bgY))
     screen.blit(bg2, (bg2X,bgY))
-    if cnt%2 :
+    if (cnt//10)%2 :
         screen.blit(rabbit1, (rx, ry))
     else:
         screen.blit(rabbit2, (rx, ry))
         
-    screen.blit(hole, (holeX-5,holeY-5))
+    
+    for holeX, holeY in holeList:
+        screen.blit(hole, (rx - holeX - 5, ry - holeY - 5))
         
-    screen.blit(snipe, (snipeX-50, snipeY-50))
+    screen.blit(snipe, (snipeX-50, snipeY-50-rebound))
+
+    # antalias <== Fasle
+    # 화상 내의 선과 모서리를 매끄럽게 나타내는 효과 
+    txt = myFont.render("SCORE : "+str(score), False, (255, 0, 0))
+    screen.blit(txt, (550, 50))
 
     pygame.display.update()     #게임화면 다시 그리기
 
