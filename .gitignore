@@ -7,5 +7,7 @@ node_modules
 *.spec
 */build/*
 */dist/*
-*/sounds/*
-*/img/*
+*.jpg
+*.png
+*.mp3
+*.wav
