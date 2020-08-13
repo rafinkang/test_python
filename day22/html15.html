@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        padding: 50px;
+    }
+    #div1 {
+        background-color: green;
+        position: absolute;
+        right: 300px;
+    }
+
+    #div2 {
+        background-color: blue;
+        position: absolute;
+        left: 200px;
+        top: 150px;
+    }
+    #div3 {
+        width: 50px;
+        height: 50px;
+        padding: 15px;
+        border-radius: 30px;
+        background-color: red;
+    }
+    #div3:hover{
+        background-color: aqua;
+    }
+    #div3:active{
+        margin-top: 3px;
+        background-color: coral;
+    }
+</style>
+
+<body>
+    <!-- div1 너비 100 높이 100 패딩 50 배경 초록 -->
+    <div id="div1">
+        ID : <input type="text" name="id" id="">
+        PW : <input type="text" name="pw" id="">
+        <input type="button" value="로그인">
+    </div>
+    <!-- 너비 100 높이 50 패딩 50 배경 파랑 -->
+    <div id="div2">div2</div>
+    <div id="div3">버튼</div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+div {
+    width: 100px;
+    height: 100px;
+    padding: 50px;
+}
+#div1 {
+    background-color: green;
+    position: absolute;
+    right: 300px;
+}
+
+#div2 {
+    background-color: blue;
+    position: absolute;
+    left: 200px;
+    top: 150px;
+}
+#div3 {
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    border-radius: 30px;
+    background-color: red;
+}
+#div3:hover{
+    background-color: aqua;
+}
+#div3:active{
+    margin-top: 3px;
+    background-color: coral;
+}
+
+.test{
+    width: 100px;
+    height: 100px;
+    background-color: darkslateblue;
+}
