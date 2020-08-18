@@ -7,3 +7,6 @@ pyinstaller -w -F Mywindow.py
 pyinstaller --hidden-import=pkg_resources.py2_warn -w -F newGame10.py
 pip install pygame
 pip install requests
+
+pip install pyautogui
+pip install pyperclip
